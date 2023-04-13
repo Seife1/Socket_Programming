@@ -4,7 +4,6 @@ import socket
 numS = 100
 
 s_name = "Sileshi"
-t_value = 1 #check point for while loop
 
 #create a socket object for the server side
 objServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -19,7 +18,7 @@ objServer.bind((name, port))
 #listen for incoming connection(s)
 objServer.listen(3)
 
-while t_value:
+while True:
 
     print('----------------------------------')
     print(f"Hello, This is {s_name}'s server\n-------------------------------\nThe server is waiting for the client")
@@ -43,25 +42,24 @@ while t_value:
     try:
         if 1 <= int(data) <= 100:
 
-            #Display the message of the client
-            print("The name of the client is " + cName.decode('utf-8'))
-            print("The client entered a number " + data.decode('utf-8'))
-
-            #Number chosen by a server
-            print("The server choose a number " + str(numS))
-
-            sum = int(data) + numS
-            print("The sum of the two number is " + str(sum))
-            t_value = 0
+            break
 
         else:
 
             print("ERROR: The number must be between 1 and 100")
-            t_value = 0
 
     except ValueError:
         print("ERROR: NOT String")
-        t_value = 0
+
+#Display the message of the client
+print("The name of the client is " + cName.decode('utf-8'))
+print("The client entered a number " + data.decode('utf-8'))
+
+#Number chosen by a server
+print("The server choose a number " + str(numS))
+
+sum = int(data) + numS
+print("The sum of the two number is " + str(sum))
 
 #close the connection
 clientsocket.close()
