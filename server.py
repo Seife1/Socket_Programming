@@ -42,7 +42,15 @@ while True:
     try:
         if 1 <= int(data) <= 100:
 
-            break
+            #Display the message of the client
+            print("The name of the client is " + cName.decode('utf-8'))
+            print("The client entered a number " + data.decode('utf-8'))
+
+            #Number chosen by a server
+            print("The server choose a number " + str(numS))
+
+            sum = int(data) + numS
+            print("The sum of the two number is " + str(sum))
 
         else:
 
@@ -51,15 +59,6 @@ while True:
     except ValueError:
         print("ERROR: NOT String")
 
-#Display the message of the client
-print("The name of the client is " + cName.decode('utf-8'))
-print("The client entered a number " + data.decode('utf-8'))
-
-#Number chosen by a server
-print("The server choose a number " + str(numS))
-
-sum = int(data) + numS
-print("The sum of the two number is " + str(sum))
-
-#close the connection
-clientsocket.close()
+    finally:
+        #close the connection
+        clientsocket.close()
